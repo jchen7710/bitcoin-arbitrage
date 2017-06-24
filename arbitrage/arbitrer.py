@@ -22,6 +22,9 @@ class Arbitrer(object):
         self.market_names = markets
         for market_name in markets:
             try:
+                print("start")
+                print(market_name.lower())
+                print("end")
                 exec('import public_markets.' + market_name.lower())
                 market = eval('public_markets.' + market_name.lower() + '.' +
                               market_name + '()')
@@ -159,14 +162,22 @@ class Arbitrer(object):
         import os
         import json
         import pprint
+        print("replay_history")
         files = os.listdir(directory)
         files.sort()
         for f in files:
+            print(directory + '/' + f)
             depths = json.load(open(directory + '/' + f, 'r'))
+            print(len(depths))
             self.depths = {}
-            for market in self.market_names:
-                if market in depths:
-                    self.depths[market] = depths[market]
+            for market in self.markets:
+                print(f)
+                print(market.name)
+                if(f == market.name.lower()):
+                    print("inside if")
+                    depths = market.format_depth(depths)
+                    print(market.name)
+                    self.depths[market.name] = depths
             self.tick()
 
     def tick(self):
