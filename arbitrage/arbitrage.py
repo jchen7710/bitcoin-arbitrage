@@ -76,8 +76,6 @@ class ArbitrerCLI:
         self.arbitrer = Arbitrer()
         if args.observers:
             self.arbitrer.init_observers(args.observers.split(","))
-        if args.markets:
-            self.arbitrer.init_markets(args.markets.split(","))
 
     def init_logger(self, args):
         level = logging.INFO
