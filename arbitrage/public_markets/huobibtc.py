@@ -12,8 +12,8 @@ class HUOBIBTC(Market):
         self.update_rate = 20
 
     def update_depth(self):
-        #url = 'http://api.huobi.com/staticmarket/depth_btc_json.js'
-        url = 'http://api.huobi.com/staticmarket/depth_ltc_json.js'
+        url = 'http://api.huobi.com/staticmarket/depth_btc_json.js'
+        #url = 'http://api.huobi.com/staticmarket/depth_ltc_json.js'
         req = urllib.request.Request(url, None, headers={
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "*/*",

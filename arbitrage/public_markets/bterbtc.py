@@ -12,8 +12,8 @@ class BTERBTC(Market):
         self.update_rate = 20
 
     def update_depth(self):
-        #url = 'http://data.bter.com/api2/1/orderBook/btc_cny'
-        url = 'http://data.bter.com/api2/1/orderBook/ltc_cny'
+        url = 'http://data.bter.com/api2/1/orderBook/btc_cny'
+        #url = 'http://data.bter.com/api2/1/orderBook/ltc_cny'
         req = urllib.request.Request(url, None, headers={
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "*/*",

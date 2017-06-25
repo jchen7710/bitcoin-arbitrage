@@ -6,14 +6,14 @@ import sys
 from .market import Market
 
 
-class BTCCBTC(Market):
+class JUBIBTC(Market):
     def __init__(self):
-        super(BTCCBTC, self).__init__("CNY")
+        super(JUBIBTC, self).__init__("CNY")
         self.update_rate = 20
 
     def update_depth(self):
-        url = 'https://data.btcchina.com/data/orderbook?market=btccny'
-        #url = 'https://data.btcchina.com/data/orderbook?market=ltccny'
+        url = 'https://www.jubi.com/api/v1/depth?coin=btc'
+        #url = 'http://api.huobi.com/staticmarket/depth_ltc_json.js'
         req = urllib.request.Request(url, None, headers={
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "*/*",
@@ -35,5 +35,5 @@ class BTCCBTC(Market):
         return {'asks': asks, 'bids': bids}
 
 if __name__ == "__main__":
-    market = BTCCBTC()
+    market = JUBIBTC()
     print(market.get_ticker())

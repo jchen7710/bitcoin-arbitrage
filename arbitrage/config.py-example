@@ -2,6 +2,7 @@ markets = [
   "BTCCBTC",
   "HUOBIBTC",
   "BTERBTC",
+  "JUBIBTC",
   #"BTCCETH",
   #"HUOBIETH",
   #"BTERETH",
