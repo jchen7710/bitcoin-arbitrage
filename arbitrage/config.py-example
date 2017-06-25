@@ -1,6 +1,13 @@
 markets = [
-  "BTCC",
-  "HUOBI"
+  "BTCCBTC",
+  "HUOBIBTC",
+  "BTERBTC",
+  #"BTCCETH",
+  #"HUOBIETH",
+  #"BTERETH",
+  #"BTCCLTC",
+  #"HUOBILTC",
+  #"BTERLTC",
 ]
 
 # observers if any
@@ -21,6 +28,10 @@ btcc_address = "FIXME"  # to deposit btc from markets / wallets
 huobi_username = "FIXME"
 huobi_password = "FIXME"
 huobi_address = "FIXME"  # to deposit btc from markets / wallets
+
+bter_username = "FIXME"
+bter_password = "FIXME"
+bter_address = "FIXME"  # to deposit btc from markets / wallets
 
 # SafeGuards
 max_tx_volume = 10  # in BTC
