@@ -6,13 +6,14 @@ import sys
 from .market import Market
 
 
-class BitstampUSD(Market):
+class BTCCBTC(Market):
     def __init__(self):
-        super(BitstampUSD, self).__init__("USD")
+        super(BTCCBTC, self).__init__("CNY")
         self.update_rate = 20
 
     def update_depth(self):
-        url = 'https://www.bitstamp.net/api/order_book/'
+        #url = 'https://data.btcchina.com/data/orderbook?market=btccny'
+        url = 'https://data.btcchina.com/data/orderbook?market=ltccny'
         req = urllib.request.Request(url, None, headers={
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "*/*",
@@ -34,5 +35,5 @@ class BitstampUSD(Market):
         return {'asks': asks, 'bids': bids}
 
 if __name__ == "__main__":
-    market = BitstampUSD()
+    market = BTCCBTC()
     print(market.get_ticker())

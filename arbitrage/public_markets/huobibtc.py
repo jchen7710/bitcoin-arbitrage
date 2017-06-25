@@ -2,16 +2,18 @@ import urllib.request
 import urllib.error
 import urllib.parse
 import json
+import sys
 from .market import Market
 
 
-class BtceUSD(Market):
+class HUOBIBTC(Market):
     def __init__(self):
-        super(BtceUSD, self).__init__("USD")
-        self.update_rate = 60
+        super(HUOBIBTC, self).__init__("CNY")
+        self.update_rate = 20
 
     def update_depth(self):
-        url = 'https://btc-e.com/api/2/btc_usd/depth'
+        #url = 'http://api.huobi.com/staticmarket/depth_btc_json.js'
+        url = 'http://api.huobi.com/staticmarket/depth_ltc_json.js'
         req = urllib.request.Request(url, None, headers={
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "*/*",
@@ -20,11 +22,11 @@ class BtceUSD(Market):
         depth = json.loads(res.read().decode('utf8'))
         self.depth = self.format_depth(depth)
 
-    def sort_and_format(self, l, reverse=False):
-        l.sort(key=lambda x: float(x[0]), reverse=reverse)
+    def sort_and_format(self, l, reverse):
         r = []
         for i in l:
             r.append({'price': float(i[0]), 'amount': float(i[1])})
+        r.sort(key=lambda x: float(x['price']), reverse=reverse)
         return r
 
     def format_depth(self, depth):
@@ -33,5 +35,5 @@ class BtceUSD(Market):
         return {'asks': asks, 'bids': bids}
 
 if __name__ == "__main__":
-    market = BtceUSD()
+    market = HUOBIBTC()
     print(market.get_ticker())

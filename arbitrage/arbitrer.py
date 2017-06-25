@@ -7,6 +7,7 @@ import time
 import logging
 import json
 from concurrent.futures import ThreadPoolExecutor, wait
+import pdb
 
 
 class Arbitrer(object):
@@ -182,7 +183,7 @@ class Arbitrer(object):
     def tick(self):
         for observer in self.observers:
             observer.begin_opportunity_finder(self.depths)
-
+        
         for kmarket1 in self.depths:
             for kmarket2 in self.depths:
                 if kmarket1 == kmarket2:  # same market
