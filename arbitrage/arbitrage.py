@@ -21,10 +21,10 @@ class ArbitrerCLI:
 
     def exec_command(self, args):
         if "watch" in args.command:
+            print("execute watch command") 
             self.create_arbitrer(args)
             self.arbitrer.loop()
         if "replay-history" in args.command:
-            print("good")
             self.create_arbitrer(args)
             self.arbitrer.replay_history('data')
         if "get-balance" in args.command:
@@ -43,20 +43,6 @@ class ArbitrerCLI:
                         if not obj.__module__.split('.')[-1].startswith('_'):
                             print(obj.__name__)
         sys.exit(0)
-
-    #def display_orders(self, args):
-    #    if not args.markets:
-    #        logging.error("You must use --markets argument to specify markets")
-    #        sys.exit(2)        
-    #    pmarkets = args.markets.split(",")
-    #    pmarketsi = []
-    #    for pmarket in pmarkets:
-    #        exec('import public_markets.' + pmarket.lower())
-    #        market = eval('public_markets.' + pmarket.lower()
-    #                      + '.' + pmarket + '()')
-    #        pmarketsi.append(market)
-    #    for market in pmarketsi:
-    #        print(market)
 
     def get_balance(self, args):
         if not args.markets:
